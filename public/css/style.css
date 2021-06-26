@@ -1,0 +1,214 @@
+.table-type1 {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  height: 60vh;
+  overflow: auto;
+  white-space:nowrap;
+  border-collapse: collapse;
+}
+
+.table-type1 .tr {
+  display: table;
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-type1 .tr .th,
+.table-type1 .tr .td {
+  display: table-cell;
+  font-size: 14px;
+  /* width: 19%; */
+  padding: 10px 15px;
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+}
+
+.table-type1 .tr .th {
+  background: #f5f5f5;
+}
+
+.form-check-input{
+  margin: 50px 0px!important;
+  margin-left: 50px!important;
+}
+
+@media screen and (min-width: 770px){
+  .table-type1 .tr .td,
+  .table-type1 .tr .th{
+    width: 15%;
+  }
+}
+
+@media screen and (max-width: 769px){
+  .form-check-input{
+    margin: 30px 0px!important;
+    margin-left: 20px!important;
+  }
+  .table-type1 .tr .td,
+  .table-type1 .tr .th{
+    width: 19%!important;
+  }
+}
+
+  .table-type2 {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  height: 60vh;
+  overflow: auto;
+  white-space:nowrap;
+  border-collapse: collapse;
+}
+
+.table-type2 .tr {
+  display: table;
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-type2 .tr .th,
+.table-type2 .tr .td {
+  display: table-cell;
+  font-size: 14px;
+  width: 15%;
+  padding: 10px 15px;
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+}
+
+.table-type2 .tr .th {
+  background: #f5f5f5;
+}
+
+@media screen and (max-width: 480px){
+  .table-type2 .tbody .tr{
+    width: 500px;
+  }
+}
+
+  .table-scroll{
+    overflow: auto;
+    white-space:nowrap;
+  }
+
+  .table-type3 {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  height: 60vh;
+  overflow: auto;
+  white-space:nowrap;
+  border-collapse: collapse;
+}
+
+.table-type3 .tr {
+  display: table;
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+.table-type3 .tr .th,
+.table-type3 .tr .td {
+  display: table-cell;
+  font-size: 14px;
+  width: 15%;
+  padding: 10px 15px;
+  border-bottom: 1px solid #cccccc;
+  text-align: center;
+}
+
+.table-type3 .tr .th {
+  background: #f5f5f5;
+}
+
+@media screen and (min-width: 1101px){
+  .table-type3 .tbody .tr .update{
+    width: 840px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .table-type3 .tbody .tr .update{
+    width: 560px;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width:1100px) {
+  .table-type3 .tbody .tr .update{
+    width: 730px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width:999px) {
+  .table-type3 .tbody .tr .update{
+    width: 570px;
+  }
+}
+
+/* === ボタンを表示するエリア ============================== */
+.sample1Area {
+  position       : relative;            /* 親要素が基点       */
+  margin         : auto;                /* 中央寄せ           */
+  width          : 160px;               /* ボタンの横幅       */
+  height         : 60px;                /* ボタンの高さ       */
+}
+ 
+ /* === ラジオボタン ======================================== */
+.sample1Area input[type="radio"] {
+  display        : none;            /* チェックボックス非表示 */
+}
+ 
+ /* === ラジオボタンのラベル（標準） ======================== */
+.sample1Area label {
+  display        : block;               /* ボックス要素に変更 */
+  position       : absolute;            /* 親要素からの相対位置*/
+  top            : 0;                   /* 標準表示位置(上)   */
+  bottom         : 0;                   /* 標準表示位置(下)   */
+  left           : 0;                   /* 標準表示位置(左)   */
+  right          : 0;                   /* 標準表示位置(右)   */
+  text-align     : center;              /* 文字位置は中央     */
+  line-height    : 60px;                /* 1行の高さ(中央寄せ)*/
+  font-size      : 18pt;                /* 文字サイズ         */
+  font-weight    : bold;                /* 太字               */
+  border         : 2px solid #ccc;      /* 枠線(一旦四方向)   */
+}
+ 
+ /* === ON側のラジオボタンのラベル（標準） ================== */
+.sample1Area #sample1on + label {
+  right          : 50%;                 /* 右端を中央に変更   */
+  border-radius  : 6px 0 0 6px;         /* 角丸(左側の上下)   */
+  background     : #eee;                /* 背景               */
+  color          : #666;                /* 文字色             */
+  border-right   : none;                /* 枠線の右側を消す   */
+}
+ 
+ /* === ON側のラジオボタンのラベル（ONのとき） ============== */
+.sample1Area #sample1on:checked +label {
+                                        /* 背景グラデーション */
+  background     : linear-gradient(180deg, #00b359, #006633, #00b359);
+  color          : #fff;                /* 文字色             */
+  text-shadow    : 1px 1px 1px #333;    /* 文字に影を付ける   */
+}
+ 
+ /* === OFF側のラジオボタンのラベル（標準） ================ */
+.sample1Area #sample1off + label {
+  left           : 50%;                 /* 左端を中央に変更   */
+  border-radius  : 0 6px 6px 0;         /* 角丸(右側の上下)   */
+  background     : #eee;                /* 背景               */
+  color          : #666;                /* 文字色             */
+  border-left    : none;                /* 枠線の左側を消す   */
+}
+ 
+ /* === OFF側のラジオボタンのラベル（OFFのとき） ============= */
+.sample1Area #sample1off:checked +label {
+                                        /* 背景グラデーション */
+  background     : linear-gradient(175deg, #ccc, #999, #ccc);
+  color          : #fff;                /* 文字色             */
+  text-shadow    : 1px 1px 1px #333;    /* 文字に影を付ける   */
+}
