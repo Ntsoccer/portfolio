@@ -3,12 +3,42 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
+    @if ($todo_id > 0 && request('user_id')==Auth::id())
+    <div class="col-sm-12">
+      <span>ユーザ一覧で</span>
+      <div>  
+        @if ($display->is_display == 1)  
+          <form method="POST" id="is_display" action="{{route('data.todos.displayUpdate', ['user_id'=>request('user_id')])}}">
+            @csrf
+            @method('PUT')
+            <input type="radio" name="switch" id="switch1" value="0" onchange="document.forms.is_display.submit()">
+            <label for="switch1">表示</label>    
+            <input type="radio" name="switch" value="1" id="switch2" checked>
+            <label for="switch2">非表示</label>
+          </form>
+        @else
+          <form method="POST" id="is_display" action="{{route('data.todos.displayUpdate', ['user_id'=>request('user_id')])}}">
+            @csrf
+            @method('PUT')
+            <input type="radio" name="switch" id="switch1" value="0" checked>
+            <label for="switch1">表示</label>    
+            <input type="radio" name="switch" value="1" id="switch2" onchange="document.forms.is_display.submit()">
+            <label for="switch2">非表示</label>
+          </form>
+        @endif
+      </div>
+    </div>
+    @endif
     <div class="col-md-12 col-sm-12">
       <div class="table-scroll">
       <div class="table-type2">
         <div class="thead">
           <div class="tr">
-            <div class="th">完了</div>
+            <div class="th">
+              @if (request('user_id') == Auth::user()->id)
+                完了
+              @endif
+            </div>
             <div class="th">すべきこと</div>
             <div class="th"></div>
             <div class="th"></div>

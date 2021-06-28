@@ -21,6 +21,7 @@ Route::group(['prefix' => 'data/physical', 'middleware' => 'auth'], function(){
   Route::post('{user_id}/store', 'PhysicalController@store')->name('data.physical.store');
   Route::get('{user_id}/edit/{id}', 'PhysicalController@edit')->name('data.physical.edit');
   Route::put('{user_id}/update/{id}', 'PhysicalController@update')->name('data.physical.update');
+  Route::put('{user_id}/displayUpdate', 'PhysicalController@displayUpdate')->name('data.physical.displayUpdate');
   Route::delete('{user_id}/destroy/{id}', 'PhysicalController@destroy')->name('data.physical.destroy');
 });
 
@@ -30,6 +31,7 @@ Route::group(['prefix' => 'data/weights', 'middleware' => 'auth'], function(){
   Route::post('{user_id}/store', 'WeightsController@store')->name('data.weights.store');
   Route::get('{user_id}/edit/{id}', 'WeightsController@edit')->name('data.weights.edit');
   Route::put('{user_id}/update/{id}', 'WeightsController@update')->name('data.weights.update');
+  Route::put('{user_id}/displayUpdate', 'WeightsController@displayUpdate')->name('data.weights.displayUpdate');
   Route::delete('{user_id}/destroy/{id}', 'WeightsController@destroy')->name('data.weights.destroy');
 });
 
@@ -39,6 +41,7 @@ Route::group(['prefix' => 'data/todos', 'middleware' => 'auth'], function(){
   Route::post('{user_id}/store', 'TodosController@store')->name('data.todos.store');
   Route::get('{user_id}/edit/{id}', 'TodosController@edit')->name('data.todos.edit');
   Route::get('{user_id}/update/{id}', 'TodosController@update')->name('data.todos.update');
+  Route::put('{user_id}/displayUpdate', 'TodosController@displayUpdate')->name('data.todos.displayUpdate');
   Route::delete('{user_id}/destroy/{id}', 'TodosController@destroy')->name('data.todos.destroy');
 });
 
@@ -52,3 +55,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('register.pre_check');
+
+Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
+
+Route::get('register/main_check/{token}', 'Auth\RegisterController@mainCheck')->name('register.main_pre_check');
+Route::post('register/main_register/{token}', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
+
+Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth');
+Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');

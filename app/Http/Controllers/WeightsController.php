@@ -22,6 +22,8 @@ class WeightsController extends Controller
 
         $date=$request->input('date');
 
+        $weight_id=optional(Weights::where('user_id',$user_id)->select('id')->first())->id;
+
         if($date == 'new'){
           $weights_data= Weights::where('user_id',$user_id)->orderBy('updated_at', 'desc')->get();    
         }
@@ -32,8 +34,9 @@ class WeightsController extends Controller
           $weights_data = Weights::where('user_id',$user_id)->orderBy('created_at', 'desc')->get();
         }
 
+        $display=optional(Weights::where('user_id', $user_id)->where('id', $weight_id)->select('is_display')->first());
 
-        return view('data.weights.index', compact('weights_data', 'user_id'));
+        return view('data.weights.index', compact('weights_data', 'weight_id', 'user_id', 'display'));
     }
 
     /**
@@ -102,8 +105,25 @@ class WeightsController extends Controller
         $weight->parts=$request->input('parts');
         $weight->event=$request->input('event');
         $weight->weight=$request->input('weight');
-        $weight->update();
+        $weight->save();
 
+        return redirect()->route('data.weights.index', ['user_id' => request('user_id')]);
+    }
+
+    public function displayUpdate(Request $request, $user_id)
+    {
+        //
+        $id=Weights::where('user_id', $user_id)->select('id')->first()->id;
+        $weight=Weights::where('user_id', $user_id)->where('id', $id)->first();
+        $user_id=request('user_id');
+        $display=Weights::where('user_id', $user_id)->where('id', $id)->select('is_display')->first();
+        if($display->is_display == 0){
+          $weight->is_display=1;
+          $weight->save();
+        }else{
+          $weight->is_display=0;
+          $weight->save();
+        };
         return redirect()->route('data.weights.index', ['user_id' => request('user_id')]);
     }
 

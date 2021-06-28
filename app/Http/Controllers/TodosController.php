@@ -18,8 +18,10 @@ class TodosController extends Controller
         //
         $user_id=request('user_id');
         $todos_data=Todos::where('user_id',$user_id)->get();
+        $todo_id=optional(Todos::where('user_id',$user_id)->select('id')->first())->id;
+        $display=optional(Todos::where('user_id', $user_id)->where('id', $todo_id)->select('is_display')->first());
 
-        return view('data.todos.index', compact('todos_data', 'user_id'));
+        return view('data.todos.index', compact('todos_data', 'user_id', 'todo_id', 'display'));
     }
 
     /**
@@ -92,6 +94,23 @@ class TodosController extends Controller
           $todos->update(['complete' => 0]);
         }
 
+        return redirect()->route('data.todos.index', ['user_id' => request('user_id')]);
+    }
+
+    public function displayUpdate(Request $request, $user_id)
+    {
+        //
+        $id=Todos::where('user_id', $user_id)->select('id')->first()->id;
+        $todo=Todos::where('user_id', $user_id)->where('id', $id)->first();
+        $user_id=request('user_id');
+        $display=Todos::where('user_id', $user_id)->where('id', $id)->select('is_display')->first();
+        if($display->is_display == 0){
+          $todo->is_display=1;
+          $todo->save();
+        }else{
+          $todo->is_display=0;
+          $todo->save();
+        };
         return redirect()->route('data.todos.index', ['user_id' => request('user_id')]);
     }
 

@@ -11,4 +11,6 @@ class Weights extends Model
       return $this->belongsTo('App\USer');
     }
 
+    protected $fillable = ['is_display'];
+
 }

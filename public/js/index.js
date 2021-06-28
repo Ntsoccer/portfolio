@@ -11,14 +11,12 @@ const abu = document.getElementsByClassName('abu');
 const legs = document.getElementsByClassName('legs');
 
 radio0.addEventListener('change', () => {
-  console.log(arm.closest('.tr'))
   for (let i = 0; i < arm.length; i++) {
     const armParent = arm[i].closest('.tr');
     armParent.style.display = "";
   }
   for (let i = 0; i < chest.length; i++) {
     const chestParent = chest[i].closest('.tr');
-    console.log(chestParent);
     chestParent.style.display = "";
   }
   for (let i = 0; i < back.length; i++) {
@@ -38,7 +36,6 @@ radio0.addEventListener('change', () => {
 radio1.addEventListener('change', () => {
   for (let i = 0; i < arm.length; i++) {
     const armParent = arm[i].closest('.tr');
-    console.log(armParent)
     armParent.style.display = "";
   }
   for (let i = 0; i < chest.length; i++) {
@@ -80,3 +77,76 @@ radio2.addEventListener('change', () => {
     legsParent.style.display = "none";
   }
 })
+radio3.addEventListener('change', () => {
+  for (let i = 0; i < arm.length; i++) {
+    const armParent = arm[i].closest('.tr');
+    armParent.style.display = "none";
+  }
+  for (let i = 0; i < chest.length; i++) {
+    const chestParent = chest[i].closest('.tr');
+    chestParent.style.display = "none";
+  }
+  for (let i = 0; i < back.length; i++) {
+    const backParent = back[i].closest('.tr');
+    backParent.style.display = "";
+  }
+  for (let i = 0; i < abu.length; i++) {
+    const abuParent = abu[i].closest('.tr');
+    abuParent.style.display = "none";
+  }
+  for (let i = 0; i < legs.length; i++) {
+    const legsParent = legs[i].closest('.tr');
+    legsParent.style.display = "none";
+  }
+})
+radio4.addEventListener('change', () => {
+  for (let i = 0; i < arm.length; i++) {
+    const armParent = arm[i].closest('.tr');
+    armParent.style.display = "none";
+  }
+  for (let i = 0; i < chest.length; i++) {
+    const chestParent = chest[i].closest('.tr');
+    chestParent.style.display = "none";
+  }
+  for (let i = 0; i < back.length; i++) {
+    const backParent = back[i].closest('.tr');
+    backParent.style.display = "none";
+  }
+  for (let i = 0; i < abu.length; i++) {
+    const abuParent = abu[i].closest('.tr');
+    abuParent.style.display = "";
+  }
+  for (let i = 0; i < legs.length; i++) {
+    const legsParent = legs[i].closest('.tr');
+    legsParent.style.display = "none";
+  }
+})
+radio5.addEventListener('change', () => {
+  for (let i = 0; i < arm.length; i++) {
+    const armParent = arm[i].closest('.tr');
+    armParent.style.display = "none";
+  }
+  for (let i = 0; i < chest.length; i++) {
+    const chestParent = chest[i].closest('.tr');
+    chestParent.style.display = "none";
+  }
+  for (let i = 0; i < back.length; i++) {
+    const backParent = back[i].closest('.tr');
+    backParent.style.display = "none";
+  }
+  for (let i = 0; i < abu.length; i++) {
+    const abuParent = abu[i].closest('.tr');
+    abuParent.style.display = "none";
+  }
+  for (let i = 0; i < legs.length; i++) {
+    const legsParent = legs[i].closest('.tr');
+    legsParent.style.display = "";
+  }
+})
+
+
+// const check = document.getElementById('is_display');
+// check.addEventListener('change', () => {
+//   this.form.submit();
+//   console.log(this);
+// })

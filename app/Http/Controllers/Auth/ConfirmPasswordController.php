@@ -37,4 +37,9 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function redirectPath()
+    {
+        return 'users';
+    }
 }

@@ -20,6 +20,7 @@ class PhysicalController extends Controller
         //
         $date=$request->input('date');
         $user_id=request('user_id');
+        $physical_id=optional(Physical::where('user_id',$user_id)->select('id')->first())->id;
 
         if($date == 'new'){
           $physical_data= Physical::where('user_id',$user_id)->orderBy('updated_at', 'desc')->get();    
@@ -32,8 +33,9 @@ class PhysicalController extends Controller
         }
 
         $users = User::All();
+        $display=optional(Physical::where('user_id', $user_id)->where('id', $physical_id)->select('is_display')->first());
 
-        return view('data.physical.index', compact('physical_data', 'user_id', 'users'));
+        return view('data.physical.index', compact('physical_data', 'user_id', 'users', 'physical_id', 'display'));
     }
 
     /**
@@ -105,8 +107,25 @@ class PhysicalController extends Controller
         $physical->height=$request->input('height');
         $physical->weight=$request->input('weight');
         $physical->bmi=$physical->weight/($physical->height/100)/($physical->height/100);
-        $physical->update();
+        $physical->save();
 
+        return redirect()->route('data.physical.index', ['user_id' => request('user_id')]);
+    }
+
+    public function displayUpdate(Request $request, $user_id)
+    {
+        //
+        $id=Physical::where('user_id', $user_id)->select('id')->first()->id;
+        $physical=Physical::where('user_id', $user_id)->where('id', $id)->first();
+        $user_id=request('user_id');
+        $display=Physical::where('user_id', $user_id)->where('id', $id)->select('is_display')->first();
+        if($display->is_display == 0){
+          $physical->is_display=1;
+          $physical->save();
+        }else{
+          $physical->is_display=0;
+          $physical->save();
+        };
         return redirect()->route('data.physical.index', ['user_id' => request('user_id')]);
     }
 

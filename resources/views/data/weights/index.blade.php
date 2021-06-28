@@ -3,22 +3,39 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
+    @if ($weight_id > 0 && request('user_id')==Auth::id())
     <div class="col-sm-12">
-      <div class="sample1Area" id="makeImg">
-        ユーザ一覧で
-        <input type="radio" name="sample1radio" id="sample1on" checked="">
-          <label for="sample1on">表示</label>
-        <input type="radio" name="sample1radio" id="sample1off">
-          <label for="sample1off">非表示</label>
+      <span>ユーザ一覧で</span>
+      <div>  
+        @if ($display->is_display == 1)  
+          <form method="POST" id="is_display" action="{{route('data.weights.displayUpdate', ['user_id'=>request('user_id')])}}">
+            @csrf
+            @method('PUT')
+            <input type="radio" name="switch" id="switch1" value="0" onchange="document.forms.is_display.submit()">
+            <label for="switch1">表示</label>    
+            <input type="radio" name="switch" value="1" id="switch2" checked>
+            <label for="switch2">非表示</label>
+          </form>
+        @else
+          <form method="POST" id="is_display" action="{{route('data.weights.displayUpdate', ['user_id'=>request('user_id')])}}">
+            @csrf
+            @method('PUT')
+            <input type="radio" name="switch" id="switch1" value="0" checked>
+            <label for="switch1">表示</label>    
+            <input type="radio" name="switch" value="1" id="switch2" onchange="document.forms.is_display.submit()">
+            <label for="switch2">非表示</label>
+          </form>
+        @endif
       </div>
     </div>
+    @endif
     <div class="form-check form-check-inline">
-      <input id="radio0" type="radio" class="form-check-input" name="search" value="0" checked>すべて
-      <input id="radio1" type="radio" class="form-check-input" name="search" value="1">腕
-      <input id="radio2" type="radio" class="form-check-input" name="search" value="2">胸
-      <input id="radio3" type="radio" class="form-check-input" name="search" value="3">背中
-      <input id="radio4" type="radio" class="form-check-input" name="search" value="4">腹筋
-      <input id="radio5" type="radio" class="form-check-input" name="search" value="5">足
+      <input id="radio0" type="radio" class="form-check-input2" name="search" value="0" checked>すべて
+      <input id="radio1" type="radio" class="form-check-input2" name="search" value="1">腕
+      <input id="radio2" type="radio" class="form-check-input2" name="search" value="2">胸
+      <input id="radio3" type="radio" class="form-check-input2" name="search" value="3">背中
+      <input id="radio4" type="radio" class="form-check-input2" name="search" value="4">腹筋
+      <input id="radio5" type="radio" class="form-check-input2" name="search" value="5">足
     </div>
     <div class="col-md-12 col-sm-12">
       <div class="table-scroll">

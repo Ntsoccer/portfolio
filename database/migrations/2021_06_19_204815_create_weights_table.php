@@ -18,6 +18,7 @@ class CreateWeightsTable extends Migration
             $table->tinyInteger('parts')->default(0);
             $table->string('event');
             $table->integer('weight');
+            $table->tinyInteger('is_display')->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

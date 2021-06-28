@@ -21,8 +21,11 @@ class UserController extends Controller
         //
         $authUser = Auth::user();
         $users = User::all();
+        // $weights=Weights::groupBy('is_display')->get(['is_display']);
+        $weights=Weights::All();
+        // dd($weights);
 
-        return view('users.index', compact('authUser', 'users'));
+        return view('users.index', compact('authUser', 'users','weights'));
     }
 
     /**
