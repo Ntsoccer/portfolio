@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table1">
                     <table class="table">
                       <thead>
                         <tr>
@@ -20,6 +21,7 @@
                           <th scope="col">体重</th>
                           <th scope="col">重量</th>
                           <th scope="col">Todo</th>
+                          <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -41,11 +43,19 @@
                                 <a href="{{route('data.todos.index', ['user_id' => $user->id])}}">Todo</a>
                               @endif
                             </td>
+                            <td>
+                              @if(Auth::check() && Auth::id() == $user->id)
+	                              <form method="post" action="{{ route('users.destroy', ['user_id' => Auth::id()]) }}">
+		                            @csrf
+		                              <input type="submit" value="退会" class="btn btn-danger" onclick='return confirm("本当に退会しますか？");'>
+	                              </form>
+                              @endif
+                            </td>
                           </tr>
-                          <tr>
                         @endforeach
                       </tbody>
                     </table>
+                  </div>
                 </div>
             </div>
         </div>

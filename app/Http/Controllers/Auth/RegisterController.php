@@ -93,7 +93,7 @@ class RegisterController extends Controller
 
     public function redirectPath()
     {
-        return 'users';
+        return '/users';
     }
 
     public function pre_check(Request $request){

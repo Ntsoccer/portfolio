@@ -59,6 +59,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.index')}}">ユーザ一覧</a>
+                                    <a class="dropdown-item" href="{{ route('data.physical.index',['user_id' => Auth::user()->id]) }}">体重管理</a>
+                                    <a class="dropdown-item" href="{{ route('data.todos.index',['user_id' => Auth::user()->id]) }}">Todoリスト</a>
+                                    <a class="dropdown-item" href="{{ route('data.weights.index',['user_id' => Auth::user()->id]) }}">重量記録</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -67,10 +71,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="{{ route('users.index')}}">ユーザ一覧</a>
-                                    <a class="dropdown-item" href="{{ route('data.physical.index',['user_id' => Auth::user()->id]) }}">体重管理</a>
-                                    <a class="dropdown-item" href="{{ route('data.todos.index',['user_id' => Auth::user()->id]) }}">Todoリスト</a>
-                                    <a class="dropdown-item" href="{{ route('data.weights.index',['user_id' => Auth::user()->id]) }}">重量記録</a>
                                 </div>
                             </li>
                         @endguest

@@ -57,11 +57,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('register.pre_check');
-
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
-
 Route::get('register/main_check/{token}', 'Auth\RegisterController@mainCheck')->name('register.main_pre_check');
 Route::post('register/main_register/{token}', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
+Route::post('/users/{user_id}/destroy', 'UserController@destroy')->name('users.destroy');
 
-Route::get('/auth/{service}', 'OAuthLoginController@getGoogleAuth');
-Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
+Route::get('/login/google', 'OAuthLoginController@getGoogleAuth');
+Route::get('/login/google/callback', 'OAuthLoginController@authGoogleCallback');

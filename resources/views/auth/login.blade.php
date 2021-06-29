@@ -64,14 +64,14 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row mt-2">
+                          <div class="col-md-8 offset-md-4">
+                            <a href="{{ url('login/google') }}" class="btn btn-success">
+                              <strong>Google Login</strong>
+                            </a> 
+                          </div>
+                        </div>
                     </form>
-                    <div class="form-group row mt-2">
-                      <div class="col-md-8 offset-md-4">
-                          <a href="auth/google" class="btn btn-secondary" role="button">
-                              Google Login
-                          </a>
-                      </div>
-                  </div>
                 </div>
             </div>
         </div>
